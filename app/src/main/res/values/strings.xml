@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Diokhél Pass</string>
+
+    <string name="title_activity_welcome">Home Screen</string>
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">Start Now</string>
+    <string name="slide_1_title">Just Here!</string>
+    <string name="slide_1_desc">Select Date And Time</string>
+    <string name="slide_2_title">And</string>
+    <string name="slide_2_desc">Choose destination</string>
+    <string name="slide_3_title">Then</string>
+    <string name="slide_3_desc">Book Your Bus Ticket</string>
+    <string name="home_title">Welcome to Application</string>
+    <string name="home_desc">With Djokhel Pass, don\'t worry, we take care of your bus ticket</string>
 </resources>

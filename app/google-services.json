@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "738840355006",
+    "firebase_url": "https://djokhelpass.firebaseio.com",
+    "project_id": "djokhelpass",
+    "storage_bucket": "djokhelpass.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:738840355006:android:63978b9ddfd173c5d5beef",
+        "android_client_info": {
+          "package_name": "com.example.diokhlpass"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "738840355006-u47qi1i4i9okd0tbaoa2sb8n1qtu7tbo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCwNBlDMi_5tk_B-4dakAmAU_g_MuT4hBg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "738840355006-u47qi1i4i9okd0tbaoa2sb8n1qtu7tbo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
