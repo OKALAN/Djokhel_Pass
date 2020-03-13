@@ -1,6 +1,7 @@
 package com.example.diokhlpass;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,10 +17,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent PremierPgeIntent = new Intent(MainActivity.this, PremierPgeActivity.class);
+                Intent PremierPgeIntent = new Intent(MainActivity.this, Onboarding.class);
                 startActivity(PremierPgeIntent);
                 finish();
 
@@ -27,8 +30,8 @@ public class MainActivity extends AppCompatActivity {
         },Duree_AffichageOnScreen);
 
 
-                Intent OnboardingIntent = new Intent(MainActivity.this, Onboarding.class);
-                startActivity(OnboardingIntent);
+              /*  Intent OnboardingIntent = new Intent(MainActivity.this, Onboarding.class);
+                startActivity(OnboardingIntent);*/
 
 
 

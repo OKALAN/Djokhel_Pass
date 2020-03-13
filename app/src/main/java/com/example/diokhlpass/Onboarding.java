@@ -2,6 +2,7 @@ package com.example.diokhlpass;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.text.Html;
@@ -14,7 +15,7 @@ import android.os.Bundle;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-public class Onboarding extends AppCompatActivity {
+public class Onboarding extends  AppCompatActivity {
     private ViewPager viewPager;
     private MyViewPagerAdapter myViewPagerAdapter;
     private LinearLayout dotsLayout;
@@ -28,16 +29,14 @@ public class Onboarding extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_onboarding);
 
-        prefs = Data_preference.getData_preference().getPrefs();
-        if (!prefs.isFirstTimeLaunch()) {
-            launchHomeScreen();
-            finish();
-        }
+
+
+
 // Making notification bar transparent
         if (Build.VERSION.SDK_INT >= 21) {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
         }
-        setContentView(R.layout.activity_main);
+       // setContentView(R.layout.PremierPgeActivity);
         viewPager = (ViewPager) findViewById(R.id.view_pager);
         dotsLayout = (LinearLayout) findViewById(R.id.layoutDots);
         btnSkip = (Button) findViewById(R.id.btn_skip);
@@ -98,8 +97,8 @@ public class Onboarding extends AppCompatActivity {
         return viewPager.getCurrentItem() + i;
     }
     private void launchHomeScreen() {
-        prefs.setFirstTimeLaunch(false);
-        startActivity(new Intent(Onboarding.this, HomeActivity.class));
+
+        startActivity(new Intent(Onboarding.this, PremierPgeActivity.class));
         finish();
     }
     //  viewpager change listener
