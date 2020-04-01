@@ -1,15 +1,11 @@
 package com.example.diokhlpass;
 
-import java.util.HashMap;
-import java.util.Map;
-
-
 public class User {
 
     private String email;
     private String fullName;
-    private String profession;
-    private String workplace;
+    private String birthday;
+    private String address;
     private String phone;
     private String password;
     private String sex;
@@ -21,12 +17,12 @@ public class User {
         this.email = email;
     }
 
-    public User(String fullName, String email, String profession,
-                String workplace, String phone) {
+    public User(String fullName, String email, String birthday,
+                String address, String phone) {
         this.email = email;
         this.fullName = fullName;
-        this.profession = profession;
-        this.workplace = workplace;
+        this.birthday = birthday;
+        this.address = address;
         this.phone = phone;
     }
 
@@ -52,12 +48,12 @@ public class User {
         this.fullName = fullName;
     }
 
-    public void setProfession(String profession) {
-        this.profession = profession;
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
     }
 
-    public void setWorkplace(String wordplace) {
-        this.workplace = wordplace;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public void setPhone(String phone) {
@@ -68,12 +64,12 @@ public class User {
         return fullName;
     }
 
-    public String getProfession() {
-        return profession;
+    public String getBirthday() {
+        return birthday;
     }
 
-    public String getWorkplace() {
-        return workplace;
+    public String getAddress() {
+        return address;
     }
 
     public String getPhone() {

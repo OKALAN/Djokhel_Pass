@@ -101,10 +101,10 @@ public class PremierPgeActivity extends AppCompatActivity {
     }
 
     public void updateUI(FirebaseUser currentUser) {
-        Intent profileIntent = new Intent(getApplicationContext(), ProfileActivity.class);
-        profileIntent.putExtra("email", currentUser.getEmail());
+        Intent HomePgeIntent = new Intent(getApplicationContext(), HomeActivity.class);
+        HomePgeIntent.putExtra("email", currentUser.getEmail());
         Log.v("DATA", currentUser.getUid());
-        startActivity(profileIntent);
+        startActivity(HomePgeIntent);
     }
 
 

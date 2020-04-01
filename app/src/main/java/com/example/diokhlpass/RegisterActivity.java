@@ -17,7 +17,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private EditText nameEditText, professionEditText, workEditText, passwordEditText;
+    private EditText nameEditText, birthdayEditText, addressEditText, passwordEditText;
     private EditText phoneEditText, emailEditText;
     private ImageView picImageView;
     private CheckBox maleCheckBox, femaleCheckBox;
@@ -26,7 +26,7 @@ public class RegisterActivity extends AppCompatActivity {
     private DatabaseReference mDatabase;
     private static final String USERS = "users";
     private String TAG = "RegisterActivity";
-    private String username, fname, email, profession, phone, workplace;
+    private String username, fname, email, birthday, phone, address;
     private String password;
     private User user;
     private FirebaseAuth mAuth;
@@ -37,8 +37,8 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         nameEditText = findViewById(R.id.fullname_edittext);
-        professionEditText = findViewById(R.id.profession_edittext);
-        workEditText = findViewById(R.id.workplace_edittext);
+        birthdayEditText = findViewById(R.id.birthday_edittext);
+        addressEditText = findViewById(R.id.address_edittext);
         phoneEditText = findViewById(R.id.phone_edittext);
         passwordEditText = findViewById(R.id.enterpass_edittext);
         emailEditText = findViewById(R.id.email_edittext);
@@ -58,10 +58,10 @@ public class RegisterActivity extends AppCompatActivity {
                     fname = nameEditText.getText().toString();
                     email = emailEditText.getText().toString();
                     phone = phoneEditText.getText().toString();
-                    profession = professionEditText.getText().toString();
-                    workplace = workEditText.getText().toString();
+                    birthday = birthdayEditText.getText().toString();
+                    address = addressEditText.getText().toString();
                     password = passwordEditText.getText().toString();
-                    user = new User(fname, email, profession, workplace, phone);
+                    user = new User(fname, email, birthday, address, phone);
                     registerUser();
                 }
             }
