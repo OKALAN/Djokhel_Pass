@@ -2,16 +2,15 @@ package com.example.diokhlpass;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
+import android.os.Bundle;
 import android.text.Html;
 import android.view.*;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
@@ -29,7 +28,16 @@ public class Onboarding extends  AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_onboarding);
 
+       //Checking for the first time
+        // THIS NEXT LINES MAKE THE APP CRASH I THINK I DON'T KNOW HOW 
+        prefs = Application.getApp().getPrefs();
+        if (!prefs.isFirstTimeLaunch()) {
+            Intent ConnexionActivity = new Intent(getApplicationContext(), PremierPgeActivity.class);
+            startActivity(ConnexionActivity);
+            finish();
+        }
 
+       //END
 
 
 // Making notification bar transparent
@@ -74,6 +82,8 @@ public class Onboarding extends  AppCompatActivity {
                 }
             }
         });
+
+
     }
 
 
@@ -157,6 +167,7 @@ public class Onboarding extends  AppCompatActivity {
             return view == obj;
         }
         @Override
+
         public void destroyItem(ViewGroup container, int position, Object object) {
             View view = (View) object;
             container.removeView(view);
