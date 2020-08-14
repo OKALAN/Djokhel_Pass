@@ -1,4 +1,4 @@
-package com.example.diokhlpass;
+package com.example.diokhlpass.wlcmScreen;
 
 import android.content.Context;
 import android.content.Intent;
@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.view.*;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -13,6 +14,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
+import com.example.diokhlpass.R;
+import com.example.diokhlpass.log.PremierPgeActivity;
 
 public class Onboarding extends  AppCompatActivity {
     private ViewPager viewPager;
@@ -21,7 +24,7 @@ public class Onboarding extends  AppCompatActivity {
     private TextView[] dots;
     private int[] layouts;
     private Button btnSkip, btnNext;
-    private prefs prefs;
+    private com.example.diokhlpass.wlcmScreen.prefs prefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,9 +32,12 @@ public class Onboarding extends  AppCompatActivity {
         setContentView(R.layout.activity_onboarding);
 
        //Checking for the first time
-        // THIS NEXT LINES MAKE THE APP CRASH I THINK I DON'T KNOW HOW 
-        prefs = Application.getApp().getPrefs();
+        prefs = new prefs(this);
+        // prefs = Application.getApp().getPrefs();
+
+        Log.d("Ephemere", String.valueOf(prefs));
         if (!prefs.isFirstTimeLaunch()) {
+            prefs.setFirstTimeLaunch(false);
             Intent ConnexionActivity = new Intent(getApplicationContext(), PremierPgeActivity.class);
             startActivity(ConnexionActivity);
             finish();

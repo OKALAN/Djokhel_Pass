@@ -1,4 +1,4 @@
-package com.example.diokhlpass;
+package com.example.diokhlpass.log;
 
 public class User {
 
@@ -18,12 +18,13 @@ public class User {
     }
 
     public User(String fullName, String email, String birthday,
-                String address, String phone) {
+                String address, String phone,String password) {
         this.email = email;
         this.fullName = fullName;
         this.birthday = birthday;
         this.address = address;
         this.phone = phone;
+        this.password = password;
     }
 
 /*    public HashMap<String, Object> getAsMap(){

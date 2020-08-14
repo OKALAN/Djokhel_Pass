@@ -1,8 +1,8 @@
-package com.example.diokhlpass;
+package com.example.diokhlpass.wlcmScreen;
 
 public class Application extends android.app.Application {
 
-    private prefs prefs;
+    private com.example.diokhlpass.wlcmScreen.prefs prefs;
     private static Application app;
     @Override
     public void onCreate() {

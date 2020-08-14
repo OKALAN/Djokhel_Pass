@@ -9,17 +9,21 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".HomeActivity">
+        <activity android:name=".byt.Research_formular">
         </activity>
-        <activity android:name=".RegisterActivity">
+        <activity android:name=".profile.Research_formular">
         </activity>
-        <activity android:name=".Onboarding">
+        <activity android:name=".home.HomeActivity">
         </activity>
-        <activity android:name=".Data_preference">
+        <activity android:name=".log.RegisterActivity">
         </activity>
-        <activity android:name=".PremierPgeActivity">
+        <activity android:name=".wlcmScreen.Onboarding">
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".wlcmScreen.Data_preference">
+        </activity>
+        <activity android:name=".log.PremierPgeActivity">
+        </activity>
+        <activity android:name=".wlcmScreen.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

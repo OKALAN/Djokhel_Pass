@@ -1,26 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/bacround_gradient"
-        tools:context=".wlcmScreen.MainActivity">
+        tools:context=".byt.Research_formular">
 
-    <TextView
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Welcome into Joxeel Pass"
-            android:textColor="#ffff"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"
-            android:textSize="30sp"
-
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="research formular"
+              android:textSize="30dp"
+              android:textColor="@color/white"
     />
-
-
 
 </RelativeLayout>

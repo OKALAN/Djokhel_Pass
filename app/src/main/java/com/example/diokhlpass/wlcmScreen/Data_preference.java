@@ -1,11 +1,11 @@
-package com.example.diokhlpass;
+package com.example.diokhlpass.wlcmScreen;
 
 import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Data_preference extends AppCompatActivity {
-    private prefs prefs;
+    private com.example.diokhlpass.wlcmScreen.prefs prefs;
     private  static Data_preference data_preference;
 
 

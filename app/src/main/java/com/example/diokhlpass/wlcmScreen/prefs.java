@@ -1,4 +1,4 @@
-package com.example.diokhlpass;
+package com.example.diokhlpass.wlcmScreen;
 //To set flags in preference
 
 import android.content.Context;

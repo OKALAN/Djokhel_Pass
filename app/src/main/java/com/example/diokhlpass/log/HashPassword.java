@@ -1,4 +1,4 @@
-package com.example.diokhlpass;
+package com.example.diokhlpass.log;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Diokhél Pass</string>
+    <string name="app_name">Joxéel Pass</string>
 
     <string name="title_activity_welcome">Home Screen</string>
     <string name="next">NEXT</string>
@@ -13,4 +13,15 @@
     <string name="slide_3_desc">Book Your Bus Ticket</string>
     <string name="home_title">Welcome to Application</string>
     <string name="home_desc">With Djokhel Pass, don\'t worry, we take care of your bus ticket</string>
+    <string name="menu">Menu</string>
+    <string name="BAT">Buy your\n Ticket(s)</string>
+    <string name="Profile">Profile</string>
+    <string name="MTB">My Travel\nBook</string>
+    <string name="Contact_us">Contact\nus</string>
+    <string name="train">Train</string>
+    <string name="car">Car</string>
+    <string name="home">Home</string>
+    <string name="create_your_account">CREATE YOUR ACCOUNT</string>
+    <string name="book_checker">book \n checker</string>
+    <string name="balance">\t Balance \t</string>
 </resources>

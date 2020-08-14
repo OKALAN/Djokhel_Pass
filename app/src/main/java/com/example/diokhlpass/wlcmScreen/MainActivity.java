@@ -1,11 +1,10 @@
-package com.example.diokhlpass;
+package com.example.diokhlpass.wlcmScreen;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Handler;
-import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import com.example.diokhlpass.R;
 
 public class MainActivity extends AppCompatActivity {
     private static int Duree_AffichageOnScreen = 4000;
