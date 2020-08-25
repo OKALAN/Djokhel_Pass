@@ -24,4 +24,5 @@
     <string name="create_your_account">CREATE YOUR ACCOUNT</string>
     <string name="book_checker">book \n checker</string>
     <string name="balance">\t Balance \t</string>
+    <string name="find_a_ride">Find A Ride</string>
 </resources>
