@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "57592487964",
+    "firebase_url": "https://user-registration-a972a.firebaseio.com",
+    "project_id": "user-registration-a972a",
+    "storage_bucket": "user-registration-a972a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:57592487964:android:731cbe4215266e59b37fd9",
+        "android_client_info": {
+          "package_name": "com.example.diokhlpass"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "57592487964-r7di55ckh42d5ssd1k789voadb0qho1r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnccUWAq91vlS4_sheLp_-NXH5jqvGkCg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "57592487964-r7di55ckh42d5ssd1k789voadb0qho1r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

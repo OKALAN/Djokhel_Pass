@@ -10,7 +10,17 @@ public class User {
     private String password;
     private String sex;
 
-    public User() {}
+
+    public User(String  fullName, String email, String birthday, String address,
+                String phone, String password, String sex) {
+        this.email = email;
+        this.fullName = fullName;
+        this.birthday = birthday;
+        this.address = address;
+        this.phone = phone;
+        this.password = password;
+        this.sex = sex;
+    }
 
     public User(String fullName, String email) {
         this.fullName = fullName;

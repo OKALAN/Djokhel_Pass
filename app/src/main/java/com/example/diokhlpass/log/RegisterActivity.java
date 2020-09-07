@@ -32,7 +32,7 @@ public class RegisterActivity extends AppCompatActivity {
     private DatabaseReference mDatabase;
     private static final String USERS = "users";
     private String TAG = "RegisterActivity";
-    private String username, fname, email, birthday, phone, address;
+    private String  fname, email, birthday, phone, address,sex;
     private String password;
     private User user;
     private FirebaseAuth mAuth;
@@ -96,7 +96,15 @@ public class RegisterActivity extends AppCompatActivity {
                     birthday = birthdayEditText.getText().toString();
                     address = addressEditText.getText().toString();
                     password = passwordEditText.getText().toString();
-                    user = new User(fname, email, birthday, address, phone,password);
+                    maleCheckbox = findViewById(R.id.male_checkbox);
+                    femaleCheckbox = findViewById(R.id.female_checkbox);
+                    if (maleCheckbox.isChecked()){
+                        sex = maleCheckbox.getText().toString();
+                    }
+                    if (femaleCheckbox.isChecked()){
+                        sex = femaleCheckbox.getText().toString();
+                    }
+                    user = new User(fname, email, birthday, address, phone,password,sex);
                     registerUser();
                 }
             }
@@ -127,20 +135,20 @@ public class RegisterActivity extends AppCompatActivity {
     }
     private boolean validatePassword(){
         String val = passwordEditText.getText().toString().trim();
-        String checkpassword = "^" +
+      /*  String checkpassword = "^" +
                 "(?=.*[a-zA-Z])" + //any letter
                 //"(?=.*[@#$^&+=])" + at least 1 special caracter
                 "(?=\\S+$)" + // no white spaces
-                ".{8,}" +   // at least 8 characters
-                "$";
+                // ".{8,}" +    at least 8 characters
+                "$";*/
         if (val.isEmpty()){
             passwordEditText.setError("Field  can not be empty");
             return false;
         }
-        else if (!val.matches(checkpassword)){
+       /* else if (!val.matches(checkpassword)){
             passwordEditText.setError("Password should contain 8 characters! ");
             return false;
-        }
+        }*/
         else {
             passwordEditText.setError(null);
             return true;
@@ -216,26 +224,26 @@ public class RegisterActivity extends AppCompatActivity {
 
 
     public void registerUser() {
-            mAuth.createUserWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-
-
-                          if (task.isSuccessful()) {
-                                // Sign in success, update UI with the signed-in user's information
-                                Log.d(TAG, "createUserWithEmail:success");
-                                FirebaseUser user = mAuth.getCurrentUser();
-                                updateUI(user);
-                          } else {
-                                // If sign in fails, display a message to the user.
-                                Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                                Toast.makeText(RegisterActivity.this, "Authentication failed.",
-                                        Toast.LENGTH_SHORT).show();
-                          }
+        mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d(TAG, "createUserWithEmail:success");
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            updateUI(user);
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
+                            Toast.makeText(RegisterActivity.this, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+                            updateUI(null);
                         }
-                    });
+
+                        // ...
+                    }
+                });
         }
 
         /**
