@@ -18,7 +18,7 @@ import java.util.Locale;
 
 public class Research_formular extends AppCompatActivity implements View.OnClickListener {
 
-    private int year,month,day;
+    private int myear,month,day;
     private Spinner dest_spinner, dept_spinner ;
     private ImageButton btnPlus, btnMinus;
     private TextView number_place;
@@ -75,6 +75,10 @@ public class Research_formular extends AppCompatActivity implements View.OnClick
                 myCalendar.set(Calendar.YEAR, year);
                 myCalendar.set(Calendar.MONTH, monthOfYear);
                 myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
+                myear = year;
+                month = monthOfYear;
+                day = dayOfMonth;
                 updateLabel();
             }
 
@@ -88,8 +92,12 @@ public class Research_formular extends AppCompatActivity implements View.OnClick
                 new DatePickerDialog(Research_formular.this, date, myCalendar
                         .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+
+
             }
         });
+
+
 
      //Number of places that user wants
         btnPlus = findViewById(R.id.btn_plus);
@@ -143,15 +151,15 @@ public class Research_formular extends AppCompatActivity implements View.OnClick
         }
 
         else {
-            spinner.setVisibility(View.GONE);
-            spinner.setVisibility(View.VISIBLE);
+//            spinner.setVisibility(View.GONE);
+  //          spinner.setVisibility(View.VISIBLE);
             Intent intent = new Intent(Research_formular.this, Result_buses.class);
             intent.putExtra("point", String.valueOf(dept_spinner.getSelectedItem()));
             intent.putExtra("destination", String.valueOf(dest_spinner.getSelectedItem()));
-            intent.putExtra("tickets", String.valueOf(number_place));
+            intent.putExtra("tickets", String.valueOf(number_place.getText().toString()));
             intent.putExtra("day", String.valueOf(day));
             intent.putExtra("month", String.valueOf(month +1));
-            intent.putExtra("year", String.valueOf(year));
+            intent.putExtra("year", String.valueOf(myear));
             startActivity(intent);
         }
     }

@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import com.example.diokhlpass.R;
+import com.example.diokhlpass.home.HomeActivity;
 import com.example.diokhlpass.log.PremierPgeActivity;
 
 public class Onboarding extends  AppCompatActivity {
@@ -36,10 +37,16 @@ public class Onboarding extends  AppCompatActivity {
         // prefs = Application.getApp().getPrefs();
 
         Log.d("Ephemere", String.valueOf(prefs));
-        if (!prefs.isFirstTimeLaunch()) {
+        if (prefs.isFirstTimeLaunch()) {
             prefs.setFirstTimeLaunch(false);
             Intent ConnexionActivity = new Intent(getApplicationContext(), PremierPgeActivity.class);
             startActivity(ConnexionActivity);
+            finish();
+        }
+        else {
+
+            Intent i = new Intent(getApplicationContext(), HomeActivity.class);
+            startActivity(i);
             finish();
         }
 
@@ -72,6 +79,7 @@ public class Onboarding extends  AppCompatActivity {
             @Override
             public void onClick(View v) {
                 launchHomeScreen();
+
             }
         });
         btnNext.setOnClickListener(new View.OnClickListener() {
@@ -88,6 +96,7 @@ public class Onboarding extends  AppCompatActivity {
                 }
             }
         });
+
 
 
     }
@@ -116,6 +125,7 @@ public class Onboarding extends  AppCompatActivity {
 
         startActivity(new Intent(Onboarding.this, PremierPgeActivity.class));
         finish();
+
     }
     //  viewpager change listener
     ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
@@ -178,5 +188,9 @@ public class Onboarding extends  AppCompatActivity {
             View view = (View) object;
             container.removeView(view);
         }
+
+
     }
+
+
 }

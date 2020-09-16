@@ -1,10 +1,190 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".byt.Result_buses">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools" 
+              android:id="@+id/layout_select_bus"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:background="@drawable/bacround_gradient"
+              tools:context=".byt.Result_buses"
+>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="@dimen/size_30"
+            android:fontFamily="sans-serif-thin"
+            android:padding="15dp"
+            android:text="@string/Préambule_disponibilité_place"
+            android:textColor="@color/white"
+            android:textSize="@dimen/size_30"
+            android:textStyle="bold" />
+
+     <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="@dimen/size_30"
+            android:orientation="horizontal">
+
+         <TextView
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="Departure town :"
+                 android:textColor="@android:color/darker_gray"
+                 android:textSize="@dimen/size_20"
+                 android:textStyle="bold"/>
+
+        <TextView
+                android:id="@+id/point_preview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-thin"
+                android:padding="10dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/size_20"
+                android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:orientation="horizontal">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Arrival town :"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="@dimen/size_20"
+                android:textStyle="bold"/>
+
+        <TextView
+                android:id="@+id/dest_preview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-thin"
+                android:padding="10dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/size_20"
+                android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:orientation="horizontal">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Number of ticket :"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="@dimen/size_20"
+                android:textStyle="bold"/>
+
+        <TextView
+                android:id="@+id/Numseats_preview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-thin"
+                android:padding="10dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/size_20"
+                android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:orientation="horizontal">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Travel date :"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="@dimen/size_20"
+                android:textStyle="bold"/>
+
+        <TextView
+                android:id="@+id/date_preview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-thin"
+                android:padding="10dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/size_20"
+                android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:orientation="horizontal">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select your travel time:"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="@dimen/size_20"
+                android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:orientation="horizontal">
+
+
+        <Spinner
+                android:id="@+id/select_bus_spinner"
+                android:layout_marginTop="15dp"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="15dp"
+               />
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="235dp"
+            android:layout_height="2dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="@color/white" />
+
+
+    <Button android:id="@+id/choose_seats"
+            android:layout_width="256dp"
+            android:layout_height="42dp"
+            android:background="@drawable/button_shape"
+            android:text="Choose a seat"
+            android:textColor="@android:color/background_light"
+            android:textSize="16sp"
+            android:layout_marginLeft="78dp"
+            android:layout_marginTop="150dp"
+
+            tools:ignore="InvalidId"/>
+
+</LinearLayout>
