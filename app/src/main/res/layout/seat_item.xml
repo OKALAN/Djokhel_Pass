@@ -27,6 +27,7 @@
 
     </ImageView>
 
+
     <ImageView
             android:id="@+id/img_seat_booked"
             android:layout_width="70dp"
