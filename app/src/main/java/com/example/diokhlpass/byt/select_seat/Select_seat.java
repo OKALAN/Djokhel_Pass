@@ -1,4 +1,4 @@
-package com.example.diokhlpass.byt;
+package com.example.diokhlpass.byt.select_seat;
 
 import android.os.Bundle;
 import android.widget.TextView;
@@ -24,7 +24,7 @@ public class Select_seat extends AppCompatActivity implements OnSeatSelected {
         txtSeatSelected = (TextView)findViewById(R.id.txt_seat_selected);
 
         List<AbstractItem> items = new ArrayList<>();
-        for (int i=0; i<5; i++) {
+        for (int i=0; i<30; i++) {
 
             if (i%COLUMNS==0 || i%COLUMNS==4) {
                 items.add(new EdgeItem(String.valueOf(i)));

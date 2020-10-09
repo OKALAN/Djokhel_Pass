@@ -8,7 +8,7 @@
               android:paddingRight="16dp"
               android:paddingTop="16dp"
               android:orientation="vertical"
-              tools:context=".byt.Select_seat">
+              tools:context=".byt.select_seat.Select_seat">
 
     <ImageView
             android:layout_width="70dp"

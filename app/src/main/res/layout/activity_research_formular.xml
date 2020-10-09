@@ -133,6 +133,7 @@
             android:layout_marginTop="431dp"
             android:layout_alignParentTop="true"/>
 
+
     <Button android:id="@+id/findaRide_button"
             android:layout_width="256dp"
             android:layout_height="42dp"
@@ -140,33 +141,33 @@
             android:text="Find a ride"
             android:textColor="@android:color/background_light"
             android:textSize="16sp"
-            android:layout_marginTop="566dp"
+            android:layout_marginTop="704dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true"
             android:layout_marginLeft="78dp"
             android:layout_marginStart="78dp"
             android:layout_alignParentLeft="true"/>
-
     <TextView android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:text="Number of seats :"
               android:textColor="@color/hintTextColor"
               android:textSize="18dp"
-              android:layout_marginTop="475dp"
+              android:layout_marginTop="586dp"
               android:layout_alignParentTop="true"
               android:layout_alignParentStart="true"
               android:layout_marginLeft="67dp"
               android:layout_marginStart="67dp"
               android:layout_alignParentLeft="true"/>
+
     <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_marginLeft="227dp"
+            android:layout_marginLeft="236dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="227dp"
+            android:layout_marginStart="236dp"
             android:layout_alignParentLeft="true"
-            android:layout_marginTop="471dp"
+            android:layout_marginTop="582dp"
             android:layout_alignParentTop="true">
 
         <ImageButton
@@ -209,5 +210,32 @@
                 android:scaleType="fitXY"
                 android:src="@drawable/bg_btn_plus"/>
     </LinearLayout>
+    <TextView
+            android:text="Leaving after : "
+            android:textColor="@color/hintTextColor"
+            android:textSize="18dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="67dp" android:layout_marginStart="67dp"
+            android:layout_alignParentLeft="true" android:layout_marginTop="448dp"
+            android:layout_alignParentTop="true"/>
+    <Spinner
+            android:layout_width="280dp"
+            android:layout_height="50dp"
+            android:id="@+id/spinner_time"
+            android:spinnerMode="dialog"
+            android:layout_marginLeft="65dp" android:layout_marginStart="65dp"
+            android:layout_marginTop="467dp"
+            android:layout_alignParentTop="true" android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"/>
+    <LinearLayout
+            android:layout_width="280dp"
+            android:layout_height="2dp"
+            android:background="@color/white"
+            android:layout_marginTop="2dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="67dp" android:layout_marginStart="67dp"
+            android:layout_alignParentLeft="true" android:layout_below="@+id/spinner_time"/>
 
 </RelativeLayout>

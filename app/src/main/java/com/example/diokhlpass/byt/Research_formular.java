@@ -6,26 +6,36 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.diokhlpass.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 
 public class Research_formular extends AppCompatActivity implements View.OnClickListener {
 
     private int myear,month,day;
-    private Spinner dest_spinner, dept_spinner ;
+    private Spinner dest_spinner, dept_spinner,Select_busSpinner ;
     private ImageButton btnPlus, btnMinus;
     private TextView number_place;
     private  EditText datePicker;
+    private String date;
     final Calendar myCalendar = Calendar.getInstance();
     private ProgressBar spinner;
     private Button findRide;
+    private // Access a Cloud Firestore instance from your Activity
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,6 +107,15 @@ public class Research_formular extends AppCompatActivity implements View.OnClick
             }
         });
 
+     //Departure time
+        Select_busSpinner = findViewById(R.id.spinner_time);
+        List<String> Select_bus_list = new ArrayList<>();
+        Select_bus_list.add("7:00 am Inter-urban travel company");
+        Select_bus_list.add("12:00 am Inter-urban travel company");
+        Select_bus_list.add("6:00 pm Inter-urban travel company");
+        Select_bus_list.add("9:00 pm Inter-urban travel company");
+        ArrayAdapter<String> busAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_dropdown_item_1line,Select_bus_list);
+        Select_busSpinner.setAdapter(busAdapter);
 
 
      //Number of places that user wants
@@ -125,6 +144,25 @@ public class Research_formular extends AppCompatActivity implements View.OnClick
 
         String _departure = String.valueOf(dept_spinner.getSelectedItem());
         String _destination = String.valueOf(dest_spinner.getSelectedItem());
+        String _time = String.valueOf(Select_busSpinner.getSelectedItem());
+        String name = "lala", email = "xyz@gmail.com", phone = "778001212";
+        date = String.valueOf(day)+"/"+String.valueOf(month +1)+"/"+String.valueOf(myear);
+
+        if (user != null) {
+            // Name, email address, and phone
+            name = user.getDisplayName();
+            email = user.getEmail();
+            phone = user.getPhoneNumber();
+
+
+            // Check if user's email is verified
+            //boolean emailVerified = user.isEmailVerified();
+
+            // The user's ID, unique to the Firebase project. Do NOT use this value to
+            // authenticate with your backend server, if you have one. Use
+            // FirebaseUser.getIdToken() instead.
+            String uid = user.getUid();
+        }
 
         if (_departure.equals("Dakar") && _destination.equals("Dakar")) {
             dialogWarning();
@@ -151,6 +189,40 @@ public class Research_formular extends AppCompatActivity implements View.OnClick
         }
 
         else {
+
+            //Bus bus_seat_booked = new Bus( String.valueOf(dept_spinner.getSelectedItem()),String.valueOf(dest_spinner.getSelectedItem()),date,String.valueOf(_time),Integer.valueOf(number_place.getText().toString()));
+           // db.collection("Reservations").document("client").set(bus_seat_booked);
+// Create a new user with a first and last name
+            Map<String, Object> bus_seat_booked = new HashMap<>();
+           bus_seat_booked.put("Dept_town", String.valueOf(dept_spinner.getSelectedItem()));
+            bus_seat_booked.put("Dest_town",String.valueOf(dest_spinner.getSelectedItem()));
+            bus_seat_booked.put("date",date);
+            bus_seat_booked.put("leaving_time",String.valueOf(_time));
+            bus_seat_booked.put("place_booked",Integer.valueOf(number_place.getText().toString()));
+            bus_seat_booked.put("Custom",name );
+            bus_seat_booked.put("email", email);
+            bus_seat_booked.put("phone",phone);
+
+// Add a new document with a generated ID
+            db.collection("Reservations")
+                    .add(bus_seat_booked)
+                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                        @Override
+                        public void onSuccess(DocumentReference documentReference) {
+                           // Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                           // Log.w(TAG, "Error adding document", e);
+                        }
+                    });
+
+
+
+
 //            spinner.setVisibility(View.GONE);
   //          spinner.setVisibility(View.VISIBLE);
             Intent intent = new Intent(Research_formular.this, Result_buses.class);
@@ -160,6 +232,7 @@ public class Research_formular extends AppCompatActivity implements View.OnClick
             intent.putExtra("day", String.valueOf(day));
             intent.putExtra("month", String.valueOf(month +1));
             intent.putExtra("year", String.valueOf(myear));
+            intent.putExtra("time",String.valueOf(_time));
             startActivity(intent);
         }
     }

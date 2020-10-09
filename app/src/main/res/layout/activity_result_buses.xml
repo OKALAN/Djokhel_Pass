@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:layout_marginTop="@dimen/size_30"
+            android:layout_marginTop="70dp"
             android:orientation="horizontal">
 
          <TextView
@@ -103,6 +103,9 @@
                 android:textStyle="bold" />
     </LinearLayout>
 
+
+
+
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -113,7 +116,7 @@
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Travel date :"
+                android:text="Date of travel :"
                 android:textColor="@android:color/darker_gray"
                 android:textSize="@dimen/size_20"
                 android:textStyle="bold"/>
@@ -139,40 +142,25 @@
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Select your travel time:"
+                android:text="Travel time :"
                 android:textColor="@android:color/darker_gray"
                 android:textSize="@dimen/size_20"
                 android:textStyle="bold"/>
 
-    </LinearLayout>
-
-    <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:orientation="horizontal">
-
-
-        <Spinner
-                android:id="@+id/select_bus_spinner"
-                android:layout_marginTop="15dp"
-                android:layout_width="250dp"
+        <TextView
+                android:id="@+id/time_preview"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="0dp"
-                android:layout_marginRight="15dp"
-               />
-
-
-
+                android:fontFamily="sans-serif-thin"
+                android:padding="10dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/size_20"
+                android:textStyle="bold" />
     </LinearLayout>
 
-    <LinearLayout
-            android:layout_width="235dp"
-            android:layout_height="2dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:background="@color/white" />
+
+
+
 
 
     <Button android:id="@+id/choose_seats"

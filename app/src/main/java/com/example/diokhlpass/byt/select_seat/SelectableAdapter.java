@@ -1,4 +1,4 @@
-package com.example.diokhlpass.byt;
+package com.example.diokhlpass.byt.select_seat;
 
 import android.util.SparseBooleanArray;
 import androidx.recyclerview.widget.RecyclerView;
