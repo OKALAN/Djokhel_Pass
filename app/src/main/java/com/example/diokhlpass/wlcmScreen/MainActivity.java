@@ -7,7 +7,7 @@ import android.os.Bundle;
 import com.example.diokhlpass.R;
 
 public class MainActivity extends AppCompatActivity {
-    private static int Duree_AffichageOnScreen = 4000;
+    private static int Duree_AffichageOnScreen = 3000;
 
 
     @Override

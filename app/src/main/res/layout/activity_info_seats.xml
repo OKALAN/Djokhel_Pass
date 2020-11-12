@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:background="@drawable/bacround_gradient"
+              tools:context=".byt.infoSeats"
+>
+
+
+    <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="@dimen/size_30"
+            android:fontFamily="sans-serif-thin"
+            android:padding="15dp"
+            android:text="INFORMATION OF RESERVATION"
+            android:textColor="@color/white"
+            android:textSize="@dimen/size_30"
+            android:textStyle="bold" />
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="70dp"
+            android:orientation="horizontal">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Departure town :"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="@dimen/size_20"
+                android:textStyle="bold"/>
+
+        <TextView
+                android:id="@+id/pt_preview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-thin"
+                android:padding="10dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/size_20"
+                android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:orientation="horizontal">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Arrival town :"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="@dimen/size_20"
+                android:textStyle="bold"/>
+
+        <TextView
+                android:id="@+id/dst_preview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-thin"
+                android:padding="10dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/size_20"
+                android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:orientation="horizontal">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Seat(s) code :"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="@dimen/size_20"
+                android:textStyle="bold"/>
+
+        <TextView
+                android:id="@+id/selted_seat_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-thin"
+                android:padding="10dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/size_20"
+                android:textStyle="bold" />
+    </LinearLayout>
+
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:orientation="horizontal">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Number of ticket :"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="@dimen/size_20"
+                android:textStyle="bold"/>
+
+        <TextView
+                android:id="@+id/seat_preview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-thin"
+                android:padding="10dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/size_20"
+                android:textStyle="bold" />
+    </LinearLayout>
+
+
+
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:orientation="horizontal">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date of travel :"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="@dimen/size_20"
+                android:textStyle="bold"/>
+
+        <TextView
+                android:id="@+id/dat_preview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-thin"
+                android:padding="10dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/size_20"
+                android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:orientation="horizontal">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Travel time :"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="@dimen/size_20"
+                android:textStyle="bold"/>
+
+        <TextView
+                android:id="@+id/tim_preview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-thin"
+                android:padding="10dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/size_20"
+                android:textStyle="bold" />
+    </LinearLayout>
+
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:orientation="horizontal">
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Price  :"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="@dimen/size_20"
+                android:textStyle="bold"/>
+
+        <TextView
+                android:id="@+id/pric_preview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-thin"
+                android:padding="10dp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/size_20"
+                android:textStyle="bold" />
+    </LinearLayout>
+
+
+
+
+
+
+    <Button android:id="@+id/payBill_button"
+            android:layout_width="256dp"
+            android:layout_height="42dp"
+            android:background="@drawable/button_shape"
+            android:text="Pay your bill(s)"
+            android:textColor="@android:color/background_light"
+            android:textSize="16sp"
+            android:layout_marginLeft="78dp"
+            android:layout_marginTop="150dp"
+
+            tools:ignore="InvalidId"/>
+
+</LinearLayout>

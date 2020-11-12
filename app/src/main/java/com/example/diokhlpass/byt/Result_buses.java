@@ -48,8 +48,16 @@ public class Result_buses extends AppCompatActivity {
       @Override
       public void onClick(View v) {
            Intent i = new Intent(Result_buses.this, Select_seat.class);
-           startActivity(i);
-           finish();
+          i.putExtra("dept", departure);
+          i.putExtra("arr",arrival);
+          i.putExtra("day",day);
+          i.putExtra("month", month);
+          i.putExtra("year",year);
+          i.putExtra("NOT",Tickets);
+          i.putExtra("day",day);
+          i.putExtra("ttt",time);
+          startActivity(i);
+
       }
   });
 

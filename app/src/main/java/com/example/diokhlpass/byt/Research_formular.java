@@ -34,6 +34,7 @@ public class Research_formular extends AppCompatActivity implements View.OnClick
     private // Access a Cloud Firestore instance from your Activity
             FirebaseFirestore db = FirebaseFirestore.getInstance();
     private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+       // ArrayList<Character> c = new ArrayList<>();
 
 
 
@@ -41,6 +42,9 @@ public class Research_formular extends AppCompatActivity implements View.OnClick
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_research_formular);
+
+
+
 
        // Toolbar toolbar =(Toolbar) findViewById();
 
