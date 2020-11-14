@@ -44,6 +44,7 @@ dependencies {
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'com.google.firebase:firebase-auth:19.3.2'
     implementation 'com.github.markushi:circlebutton:1.1'
+    implementation 'com.google.android.material:material:1.0.0'
 
     // FirebaseUI for Firebase Auth
     implementation 'com.firebaseui:firebase-ui-auth:6.3.0'

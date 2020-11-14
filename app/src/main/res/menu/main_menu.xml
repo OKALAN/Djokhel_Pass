@@ -7,7 +7,7 @@
             android:title="@string/home"
             android:icon="@drawable/ic_home_icon"/>
 
-       <item
+      <!-- <item
                android:id="@+id/nav_profile"
                android:title="Profile"
                android:icon="@drawable/ic_profile"/>
@@ -15,21 +15,26 @@
        <item
                android:id="@+id/nav_historiq"
                android:title="Journal"
-               android:icon="@drawable/ic_book"/>
+               android:icon="@drawable/ic_book"/>-->
        <item
-               android:id="@+id/nav_Partners"
-               android:title="Our Partners"
-               android:icon="@drawable/ic_home_icon"/>
+               android:id="@+id/nav_help"
+               android:title="Help"
+               android:icon="@drawable/ic_help_black_24dp"/>
 
        <item
-               android:id="@+id/nav_setting"
-               android:title="Setting"
-               android:icon="@drawable/ic_settings"/>
-
-       <item
-               android:id="@+id/nav_Contact"
-               android:title="Contact Us"
+               android:id="@+id/nav_AboutUs"
+               android:title="About Us"
                android:icon="@drawable/ic_info"/>
+
+       <item
+               android:id="@+id/nav_share"
+               android:title="Share"
+               android:icon="@drawable/ic_share_black_24dp"/>
+
+       <item
+               android:id="@+id/nav_rate"
+               android:title="Rate us"
+               android:icon="@drawable/ic_rate_review_black_24dp"/>
 
        <item
                android:id="@+id/nav_logout"
