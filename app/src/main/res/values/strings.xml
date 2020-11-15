@@ -25,7 +25,7 @@
     <string name="book_checker">book \n checker</string>
     <string name="balance">\t Balance \t</string>
     <string name="find_a_ride">Find A Ride</string>
-    <string name="Préambule_disponibilité_place">There are places available. Please where you want to sit.
+    <string name="Préambule_disponibilité_place">There are places available. Please select where you want to sit.
     </string>
     <string name="wlcm_jp">Welcome into Joxeel Pass</string>
 </resources>

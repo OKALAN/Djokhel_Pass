@@ -4,37 +4,43 @@ import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.*;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.diokhlpass.R;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class Research_formular extends AppCompatActivity implements View.OnClickListener {
 
-    private int myear,month,day;
+    private int myear,month,day,i,j;
     private Spinner dest_spinner, dept_spinner,Select_busSpinner ;
     private ImageButton btnPlus, btnMinus;
     private TextView number_place;
     private  EditText datePicker;
-    private String date;
+    private String date, dateBooked,dep_des, horaire;
     final Calendar myCalendar = Calendar.getInstance();
     private ProgressBar spinner;
     private Button findRide;
     private // Access a Cloud Firestore instance from your Activity
             FirebaseFirestore db = FirebaseFirestore.getInstance();
     private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-       // ArrayList<Character> c = new ArrayList<>();
+    private String TAG;
+    // ArrayList<Character> c = new ArrayList<>();
 
 
 
@@ -152,6 +158,10 @@ public class Research_formular extends AppCompatActivity implements View.OnClick
         String name = "lala", email = "xyz@gmail.com", phone = "778001212";
         date = String.valueOf(day)+"/"+String.valueOf(month +1)+"/"+String.valueOf(myear);
 
+
+
+
+
         if (user != null) {
             // Name, email address, and phone
             name = user.getDisplayName();
@@ -196,7 +206,7 @@ public class Research_formular extends AppCompatActivity implements View.OnClick
 
             //Bus bus_seat_booked = new Bus( String.valueOf(dept_spinner.getSelectedItem()),String.valueOf(dest_spinner.getSelectedItem()),date,String.valueOf(_time),Integer.valueOf(number_place.getText().toString()));
            // db.collection("Reservations").document("client").set(bus_seat_booked);
-// Create a new user with a first and last name
+          // Create a new user with a first and last name
             Map<String, Object> bus_seat_booked = new HashMap<>();
            bus_seat_booked.put("Dept_town", String.valueOf(dept_spinner.getSelectedItem()));
             bus_seat_booked.put("Dest_town",String.valueOf(dest_spinner.getSelectedItem()));
@@ -207,7 +217,7 @@ public class Research_formular extends AppCompatActivity implements View.OnClick
             bus_seat_booked.put("email", email);
             bus_seat_booked.put("phone",phone);
 
-// Add a new document with a generated ID
+            // Add a new document with a generated ID
             db.collection("Reservations")
                     .add(bus_seat_booked)
                     .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
@@ -224,6 +234,44 @@ public class Research_formular extends AppCompatActivity implements View.OnClick
                         }
                     });
 
+          dateBooked = String.valueOf(day)+"-"+String.valueOf(month +1)+"-"+String.valueOf(myear);
+          dep_des = _departure+"-"+_destination;
+          horaire = _time;
+
+
+
+
+            DocumentReference docRef =   db.collection("Bus2").document(dateBooked).collection(dep_des).document(horaire);
+            docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    if (task.isSuccessful()) {
+                        DocumentSnapshot document = task.getResult();
+                        int n =Integer.valueOf( (document.getData().get("nbreRestant").toString()));
+                        if (document.exists()) {
+                            Log.d(TAG, "DocumentSnapshot data: " +n);
+                            if (n>=24){
+                              n = n - Integer.valueOf(number_place.getText().toString());
+                                Map<String,Integer> numSeat = new HashMap<>();
+                                numSeat.put("nbreRestant",n);
+                                db.collection("Bus2").document(dateBooked).collection(dep_des).document(horaire) .set(numSeat, SetOptions.merge());
+                            }
+                            else{
+                                 n = n - Integer.valueOf(number_place.getText().toString());
+                                Map<String,Integer> numSeat = new HashMap<>();
+                                numSeat.put("nbreRestant",n);
+                                db.collection("Bus2").document(dateBooked).collection(dep_des).document(horaire) .set(numSeat, SetOptions.merge());
+                            }
+
+
+                        } else {
+                            Log.d(TAG, "No such document");
+                        }
+                    } else {
+                        Log.d(TAG, "get failed with ", task.getException());
+                    }
+                }
+            });
 
 
 

@@ -47,7 +47,7 @@ public class Result_buses extends AppCompatActivity {
   choose_a_seat.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-           Intent i = new Intent(Result_buses.this, Select_seat.class);
+          Intent i = new Intent(Result_buses.this, Select_seat.class);
           i.putExtra("dept", departure);
           i.putExtra("arr",arrival);
           i.putExtra("day",day);
