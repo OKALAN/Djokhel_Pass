@@ -27,7 +27,7 @@ import java.util.*;
 
 public class Research_formular extends AppCompatActivity implements View.OnClickListener {
 
-    private int myear,month,day,i,j;
+    private int myear,month,day;
     private Spinner dest_spinner, dept_spinner,Select_busSpinner ;
     private ImageButton btnPlus, btnMinus;
     private TextView number_place;
@@ -40,7 +40,10 @@ public class Research_formular extends AppCompatActivity implements View.OnClick
             FirebaseFirestore db = FirebaseFirestore.getInstance();
     private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     private String TAG;
-    // ArrayList<Character> c = new ArrayList<>();
+    private  Map<String,Integer> numSeat = new HashMap<>();
+    private int i =  myCalendar.get(Calendar.DAY_OF_MONTH);
+
+
 
 
 
@@ -92,17 +95,29 @@ public class Research_formular extends AppCompatActivity implements View.OnClick
             public void onDateSet(DatePicker view, int year, int monthOfYear,
                                   int dayOfMonth) {
                 // TODO Auto-generated method stub
+
+
                 myCalendar.set(Calendar.YEAR, year);
                 myCalendar.set(Calendar.MONTH, monthOfYear);
                 myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
-                myear = year;
-                month = monthOfYear;
-                day = dayOfMonth;
-                updateLabel();
+                    myear = year;
+                    month = monthOfYear;
+                    day = dayOfMonth;
+
+                   if ((day>i)&&(day<=i+2)){
+
+                       updateLabel();
+
+                   }
+                   else
+                       Toast.makeText(Research_formular.this,"You can only book seats 2 days before the trip so choose a good date.",Toast.LENGTH_LONG).show();
+
+
             }
 
         };
+
 
         datePicker.setOnClickListener(new View.OnClickListener() {
 
@@ -240,32 +255,35 @@ public class Research_formular extends AppCompatActivity implements View.OnClick
 
 
 
+           // db.collection("Bus0").document(dateBooked).collection(dep_des).document(horaire);
 
-            DocumentReference docRef =   db.collection("Bus2").document(dateBooked).collection(dep_des).document(horaire);
+            DocumentReference docRef =   db.collection("Bus0").document(dateBooked).collection(dep_des).document(horaire);
             docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                     if (task.isSuccessful()) {
                         DocumentSnapshot document = task.getResult();
-                        int n =Integer.valueOf( (document.getData().get("nbreRestant").toString()));
+                        int n ;
                         if (document.exists()) {
-                            Log.d(TAG, "DocumentSnapshot data: " +n);
-                            if (n>=24){
-                              n = n - Integer.valueOf(number_place.getText().toString());
-                                Map<String,Integer> numSeat = new HashMap<>();
-                                numSeat.put("nbreRestant",n);
-                                db.collection("Bus2").document(dateBooked).collection(dep_des).document(horaire) .set(numSeat, SetOptions.merge());
-                            }
-                            else{
-                                 n = n - Integer.valueOf(number_place.getText().toString());
-                                Map<String,Integer> numSeat = new HashMap<>();
-                                numSeat.put("nbreRestant",n);
-                                db.collection("Bus2").document(dateBooked).collection(dep_des).document(horaire) .set(numSeat, SetOptions.merge());
-                            }
+
+                                n=Integer.valueOf( (document.getData().get("nbreRestant").toString()));
+                                int i=Integer.valueOf(number_place.getText().toString());
+
+
+                                    n = n - Integer.valueOf(number_place.getText().toString());
+                                    Map<String,Integer> numSeat = new HashMap<>();
+                                    numSeat.put("nbreRestant",n);
+                                    db.collection("Bus0").document(dateBooked).collection(dep_des).document(horaire) .set(numSeat, SetOptions.merge());
 
 
                         } else {
                             Log.d(TAG, "No such document");
+
+                            n=24;
+                            n = n - Integer.valueOf(number_place.getText().toString());
+
+                            numSeat.put("nbreRestant",n);
+                            db.collection("Bus0").document(dateBooked).collection(dep_des).document(horaire) .set(numSeat, SetOptions.merge());
                         }
                     } else {
                         Log.d(TAG, "get failed with ", task.getException());
@@ -306,7 +324,7 @@ public class Research_formular extends AppCompatActivity implements View.OnClick
         switch (v.getId())
         {
             case R.id.btn_plus :
-                if(i<49)
+                if(i<24)
                    i+=1;
                 else
                     Toast.makeText(this,"No more place available!",Toast.LENGTH_SHORT).show();
