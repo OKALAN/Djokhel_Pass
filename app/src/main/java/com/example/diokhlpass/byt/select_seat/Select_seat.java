@@ -18,6 +18,8 @@ public class Select_seat extends AppCompatActivity implements OnSeatSelected {
 
     private static final int COLUMNS = 5;
     private TextView txtSeatSelected;
+    private ArrayList<Integer> listnumSeat = new ArrayList<>();
+    private  BusAdapter adapter;
 
 
     @Override
@@ -46,8 +48,10 @@ public class Select_seat extends AppCompatActivity implements OnSeatSelected {
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.lst_items);
         recyclerView.setLayoutManager(manager);
 
-       BusAdapter adapter = new BusAdapter(this, items);
+        adapter= new BusAdapter(this, items);
         recyclerView.setAdapter(adapter);
+
+
 
 
     }
@@ -60,6 +64,22 @@ public class Select_seat extends AppCompatActivity implements OnSeatSelected {
             @Override
             public void onClick(View v) {
                 String dsp , arv, num, day,month,year, ttt;
+                listnumSeat =  adapter.numSeat();
+                //String c = String.valueOf(listnumSeat.size()) ;
+                String a =" " ;
+
+
+                for (int i=0;i<listnumSeat.size();i++){
+
+                    a = a + String.valueOf(listnumSeat.get(i)) + " ";
+
+                }
+
+
+
+
+
+
 
 
 
@@ -82,6 +102,7 @@ public class Select_seat extends AppCompatActivity implements OnSeatSelected {
                 i.putExtra("NOT",num);
                 i.putExtra("day",day);
                 i.putExtra("ttt",ttt);
+                i.putExtra("scode",a);
 
 
                 startActivity(i);

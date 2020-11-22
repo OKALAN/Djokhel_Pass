@@ -16,8 +16,9 @@ import java.util.List;
 
 public class BusAdapter extends SelectableAdapter<RecyclerView.ViewHolder> {
 
-private OnSeatSelected mOnSeatSelected;
-public    ArrayList<Integer> number_seat = new ArrayList<>();
+
+    private OnSeatSelected mOnSeatSelected;
+public static ArrayList<Integer> number_seat = new ArrayList<>();
 
 private static class EdgeViewHolder extends RecyclerView.ViewHolder {
 
@@ -149,6 +150,11 @@ private static class EmptyViewHolder extends RecyclerView.ViewHolder {
 
 
 
+
+        }
+
+        public static ArrayList<Integer> numSeat(){
+         return number_seat;
         }
 
 }
