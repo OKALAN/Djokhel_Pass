@@ -104,15 +104,13 @@ public class Research_formular extends AppCompatActivity implements View.OnClick
                     myear = year;
                     month = monthOfYear;
                     day = dayOfMonth;
+                    if ((day>i)&&(day<=i+2)){
 
-                   if ((day>i)&&(day<=i+2)){
-
-                       updateLabel();
+                         updateLabel();
 
                    }
                    else
-                       Toast.makeText(Research_formular.this,"You can only book seats 2 days before the trip so choose a good date.",Toast.LENGTH_LONG).show();
-
+                       Toast.makeText(Research_formular.this, R.string.date_text,Toast.LENGTH_LONG).show();
 
             }
 
@@ -154,12 +152,17 @@ public class Research_formular extends AppCompatActivity implements View.OnClick
 
      //find a ride button
         findRide =(Button) findViewById(R.id.findaRide_button);
-        findRide.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                validation();
-            }
-        });
+
+            findRide.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (validateTravelDate()){
+                        validation();
+                    }
+                }
+            });
+
+
 
 
 
@@ -308,10 +311,26 @@ public class Research_formular extends AppCompatActivity implements View.OnClick
     }
 
 
+
+
+
     private void updateLabel() {
         String myFormat = "dd/MM/yy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.ROOT);
         datePicker.setText(sdf.format(myCalendar.getTime()));
+    }
+    private boolean validateTravelDate(){
+        String val = datePicker.getText().toString().trim();
+
+        if (val.isEmpty()){
+            datePicker.setError("This field can't be empty!");
+            return false;
+        }
+        else {
+            datePicker.setError(null);
+            return true;
+        }
+
     }
 
 

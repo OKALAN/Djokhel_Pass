@@ -12,6 +12,7 @@ import com.example.diokhlpass.R;
 import java.util.ArrayList;
 import java.util.List;
 
+
 //import com.google.firebase.database.core.Context;
 
 public class BusAdapter extends SelectableAdapter<RecyclerView.ViewHolder> {
@@ -19,6 +20,7 @@ public class BusAdapter extends SelectableAdapter<RecyclerView.ViewHolder> {
 
     private OnSeatSelected mOnSeatSelected;
 public static ArrayList<Integer> number_seat = new ArrayList<>();
+
 
 private static class EdgeViewHolder extends RecyclerView.ViewHolder {
 

@@ -58,6 +58,7 @@ public class Result_buses extends AppCompatActivity {
           i.putExtra("ttt",time);
           startActivity(i);
 
+
       }
   });
 

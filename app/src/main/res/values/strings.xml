@@ -29,4 +29,7 @@
     </string>
     <string name="wlcm_jp">Welcome into Joxeel Pass</string>
     <string name="map">MAP</string>
+    <string name="navigation_drawer_open">OPEN</string>
+    <string name="navigation_drawer_close">CLOSE</string>
+    <string name="date_text">You can only book seats 2 days before the trip so choose a good date.</string>
 </resources>

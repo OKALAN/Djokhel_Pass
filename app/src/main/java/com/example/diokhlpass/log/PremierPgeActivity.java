@@ -8,7 +8,7 @@ import android.widget.*;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.diokhlpass.R;
-import com.example.diokhlpass.home.HomeActivity;
+import com.example.diokhlpass.home.Home;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -117,7 +117,7 @@ public class PremierPgeActivity extends AppCompatActivity {
     }
 
     public void updateUI(FirebaseUser currentUser) {
-        Intent HomePgeIntent = new Intent(getApplicationContext(), HomeActivity.class);
+        Intent HomePgeIntent = new Intent(getApplicationContext(), Home.class);
 //        HomePgeIntent.putExtra("email", currentUser.getEmail());
 //        Log.v("DATA", currentUser.getUid());
         startActivity(HomePgeIntent);

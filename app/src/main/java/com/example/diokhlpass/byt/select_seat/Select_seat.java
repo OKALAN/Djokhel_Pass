@@ -4,11 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.diokhlpass.R;
 import com.example.diokhlpass.byt.infoSeats;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +24,9 @@ public class Select_seat extends AppCompatActivity implements OnSeatSelected {
     private TextView txtSeatSelected;
     private ArrayList<Integer> listnumSeat = new ArrayList<>();
     private  BusAdapter adapter;
+    private // Access a Cloud Firestore instance from your Activity
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
 
     @Override
@@ -65,21 +72,8 @@ public class Select_seat extends AppCompatActivity implements OnSeatSelected {
             public void onClick(View v) {
                 String dsp , arv, num, day,month,year, ttt;
                 listnumSeat =  adapter.numSeat();
+                Intent i = new Intent(Select_seat.this, infoSeats.class);
                 //String c = String.valueOf(listnumSeat.size()) ;
-                String a =" " ;
-
-
-                for (int i=0;i<listnumSeat.size();i++){
-
-                    a = a + String.valueOf(listnumSeat.get(i)) + " ";
-
-                }
-
-
-
-
-
-
 
 
 
@@ -91,21 +85,34 @@ public class Select_seat extends AppCompatActivity implements OnSeatSelected {
                 year = getIntent().getStringExtra("year");
                 ttt = getIntent().getStringExtra("ttt");
 
+                String a =" " ;
+                if ( Integer.valueOf(num)==listnumSeat.size() ){
+                    for (int x=0;x<listnumSeat.size();x++){
 
-                Intent i = new Intent(Select_seat.this, infoSeats.class);
-
-                i.putExtra("dept", dsp);
-                i.putExtra("arr",arv);
-                i.putExtra("day",day);
-                i.putExtra("month", month);
-                i.putExtra("year",year);
-                i.putExtra("NOT",num);
-                i.putExtra("day",day);
-                i.putExtra("ttt",ttt);
-                i.putExtra("scode",a);
+                        a = a + String.valueOf(listnumSeat.get(x)) + " ";
+                        db.collection("Bus0").document(day+"-"+month+"-"+year).collection(dsp+"-"+arv).document(ttt).set("numBooked",listnumSeat.get(x));
 
 
-                startActivity(i);
+                    }
+
+                    i.putExtra("dept", dsp);
+                    i.putExtra("arr",arv);
+                    i.putExtra("day",day);
+                    i.putExtra("month", month);
+                    i.putExtra("year",year);
+                    i.putExtra("NOT",num);
+                    i.putExtra("day",day);
+                    i.putExtra("ttt",ttt);
+                    i.putExtra("scode",a);
+
+                    startActivity(i);
+
+                }
+                else {
+                    Toast.makeText(Select_seat.this, "Nombre de places incorrect!",Toast.LENGTH_SHORT).show();
+
+                }
+
 
 
             }

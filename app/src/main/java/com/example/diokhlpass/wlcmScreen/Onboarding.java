@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import com.example.diokhlpass.R;
-import com.example.diokhlpass.home.HomeActivity;
+import com.example.diokhlpass.home.Home;
 import com.example.diokhlpass.log.PremierPgeActivity;
 
 public class Onboarding extends  AppCompatActivity {
@@ -45,7 +45,7 @@ public class Onboarding extends  AppCompatActivity {
         }
         else {
 
-            Intent i = new Intent(getApplicationContext(), HomeActivity.class);
+            Intent i = new Intent(getApplicationContext(), Home.class);
             startActivity(i);
             finish();
         }
