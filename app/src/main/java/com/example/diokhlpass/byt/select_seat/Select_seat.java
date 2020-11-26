@@ -13,9 +13,12 @@ import com.example.diokhlpass.byt.infoSeats;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Select_seat extends AppCompatActivity implements OnSeatSelected {
 
@@ -27,6 +30,7 @@ public class Select_seat extends AppCompatActivity implements OnSeatSelected {
     private // Access a Cloud Firestore instance from your Activity
             FirebaseFirestore db = FirebaseFirestore.getInstance();
     private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    private Map<String, Integer>  numBooked = new HashMap<>();
 
 
     @Override
@@ -86,11 +90,13 @@ public class Select_seat extends AppCompatActivity implements OnSeatSelected {
                 ttt = getIntent().getStringExtra("ttt");
 
                 String a =" " ;
+                String nB;
                 if ( Integer.valueOf(num)==listnumSeat.size() ){
                     for (int x=0;x<listnumSeat.size();x++){
-
                         a = a + String.valueOf(listnumSeat.get(x)) + " ";
-                        db.collection("Bus0").document(day+"-"+month+"-"+year).collection(dsp+"-"+arv).document(ttt).set("numBooked",listnumSeat.get(x));
+                        nB = "numBooked"+x;
+                        numBooked.put(nB,listnumSeat.get(x));
+                        db.collection("Bus0").document(day+"-"+month+"-"+year).collection(dsp+"-"+arv).document(ttt).set(numBooked, SetOptions.merge());
 
 
                     }
