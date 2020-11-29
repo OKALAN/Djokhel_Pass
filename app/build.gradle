@@ -12,6 +12,9 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
+        ndk {
+            abiFilters "armeabi", "armeabi-v7a", "x86", "mips"
+        }
     }
     buildTypes {
         release {
@@ -50,10 +53,18 @@ dependencies {
     implementation 'com.firebaseui:firebase-ui-auth:6.3.0'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
 
-    implementation 'com.google.firebase:firebase-firestore:21.6.0'
-
-
+    // implementation 'com.google.firebase:firebase-firestore:21.6.0'
     implementation 'com.android.support:multidex:1.0.3'
+    // Import the BoM for the Firebase platform
+    implementation platform('com.google.firebase:firebase-bom:26.1.0')
+    // Declare the dependency for the Cloud Firestore library
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+    implementation 'com.google.firebase:firebase-firestore'
+    //paypal
+    implementation 'com.paypal.sdk:paypal-android-sdk:2.16.0'
+
+    implementation 'com.google.zxing:core:3.2.1'
+    implementation 'com.journeyapps:zxing-android-embedded:3.2.0@aar'
 
 }
 

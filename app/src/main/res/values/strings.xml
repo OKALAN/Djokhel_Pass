@@ -1,35 +1,37 @@
 <resources>
     <string name="app_name">Joxéel Pass</string>
 
-    <string name="title_activity_welcome">Home Screen</string>
-    <string name="next">NEXT</string>
-    <string name="skip">SKIP</string>
-    <string name="start">Start Now</string>
-    <string name="slide_1_title">Just Here!</string>
-    <string name="slide_1_desc">Select Date And Time</string>
-    <string name="slide_2_title">And</string>
-    <string name="slide_2_desc">Choose destination</string>
-    <string name="slide_3_title">Then</string>
-    <string name="slide_3_desc">Book Your Bus Ticket</string>
-    <string name="home_title">Welcome to Application</string>
-    <string name="home_desc">With Joxeel Pass, don\'t worry, we take care of your bus ticket</string>
-    <string name="menu">Menu</string>
-    <string name="BAT">Buy your\n Ticket(s)</string>
-    <string name="Profile">Profile</string>
-    <string name="MTB">My Travel\nBook</string>
-    <string name="Contact_us">Contact\nus</string>
-    <string name="train">Train</string>
-    <string name="car">Car</string>
-    <string name="home">Home</string>
-    <string name="create_your_account">CREATE YOUR ACCOUNT</string>
-    <string name="book_checker">book \n checker</string>
-    <string name="balance">\t Balance \t</string>
-    <string name="find_a_ride">Find A Ride</string>
-    <string name="Préambule_disponibilité_place">There are places available. Please select where you want to sit.
+    <string name="title_activity_welcome" translatable="false">Home Screen</string>
+    <string name="next" translatable="false">NEXT</string>
+    <string name="skip" translatable="false">SKIP</string>
+    <string name="start" translatable="false">Start Now</string>
+    <string name="slide_1_title" translatable="false">Just Here!</string>
+    <string name="slide_1_desc" translatable="false">Select Date And Time</string>
+    <string name="slide_2_title" translatable="false">And</string>
+    <string name="slide_2_desc" translatable="false">Choose destination</string>
+    <string name="slide_3_title" translatable="false">Then</string>
+    <string name="slide_3_desc" translatable="false">Book Your Bus Ticket</string>
+    <string name="home_title" translatable="false">Welcome to Application</string>
+    <string name="home_desc" translatable="false">With Joxeel Pass, don\'t worry, we take care of your bus ticket
     </string>
-    <string name="wlcm_jp">Welcome into Joxeel Pass</string>
-    <string name="map">MAP</string>
-    <string name="navigation_drawer_open">OPEN</string>
-    <string name="navigation_drawer_close">CLOSE</string>
-    <string name="date_text">You can only book seats 2 days before the trip so choose a good date.</string>
+    <string name="menu" translatable="false">Menu</string>
+    <string name="BAT" translatable="false">Buy \t your\n Ticket(s)</string>
+    <string name="Profile" translatable="false">Profile</string>
+    <string name="MTB" translatable="false">My Travel\nBook</string>
+    <string name="Contact_us" translatable="false">Contact\nus</string>
+
+    <string name="home" translatable="false">Home\n</string>
+    <string name="create_your_account" translatable="false">CREATE YOUR ACCOUNT</string>
+    <string name="book_checker" translatable="false">book \n checker</string>
+    <string name="find_a_ride" translatable="false">Find A Ride</string>
+    <string name="Préambule_disponibilité_place" translatable="false">There are places available. Please select where
+        you want to sit.
+    </string>
+    <string name="wlcm_jp" translatable="false">Welcome into Joxeel Pass</string>
+    <string name="map" translatable="false">MAP</string>
+    <string name="navigation_drawer_open" translatable="false">OPEN</string>
+    <string name="navigation_drawer_close" translatable="false">CLOSE</string>
+    <string name="date_text" translatable="false">Vous ne pouvez réserver que pendant les 7 jours prochains et pas
+        au-delà. Donc choissisez une bonne date .
+    </string>
 </resources>

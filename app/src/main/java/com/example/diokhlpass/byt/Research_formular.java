@@ -12,8 +12,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.diokhlpass.R;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -104,10 +102,8 @@ public class Research_formular extends AppCompatActivity implements View.OnClick
                     myear = year;
                     month = monthOfYear;
                     day = dayOfMonth;
-                    if ((day>i)&&(day<=i+2)){
-
+                    if ((day>i)&&(day<=i+7)){
                          updateLabel();
-
                    }
                    else
                        Toast.makeText(Research_formular.this, R.string.date_text,Toast.LENGTH_LONG).show();
@@ -133,10 +129,10 @@ public class Research_formular extends AppCompatActivity implements View.OnClick
      //Departure time
         Select_busSpinner = findViewById(R.id.spinner_time);
         List<String> Select_bus_list = new ArrayList<>();
-        Select_bus_list.add("7:00 am Inter-urban travel company");
-        Select_bus_list.add("12:00 am Inter-urban travel company");
-        Select_bus_list.add("6:00 pm Inter-urban travel company");
-        Select_bus_list.add("9:00 pm Inter-urban travel company");
+        Select_bus_list.add("7H00 Compagnie Inter-Urbaine de voyage");
+        Select_bus_list.add("12H00 Compagnie Inter-Urbaine de voyage");
+        Select_bus_list.add("18H00 Compagnie Inter-Urbaine de voyage");
+        Select_bus_list.add("21H00 Compagnie Inter-Urbaine de voyage");
         ArrayAdapter<String> busAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_dropdown_item_1line,Select_bus_list);
         Select_busSpinner.setAdapter(busAdapter);
 
@@ -179,23 +175,6 @@ public class Research_formular extends AppCompatActivity implements View.OnClick
 
 
 
-
-        if (user != null) {
-            // Name, email address, and phone
-            name = user.getDisplayName();
-            email = user.getEmail();
-            phone = user.getPhoneNumber();
-
-
-            // Check if user's email is verified
-            //boolean emailVerified = user.isEmailVerified();
-
-            // The user's ID, unique to the Firebase project. Do NOT use this value to
-            // authenticate with your backend server, if you have one. Use
-            // FirebaseUser.getIdToken() instead.
-            String uid = user.getUid();
-        }
-
         if (_departure.equals("Dakar") && _destination.equals("Dakar")) {
             dialogWarning();
         } else if (_departure.equals("Thies") && _destination.equals("Thies") || _departure.equals("Thies") && _destination.equals("Mbour")
@@ -225,7 +204,7 @@ public class Research_formular extends AppCompatActivity implements View.OnClick
             //Bus bus_seat_booked = new Bus( String.valueOf(dept_spinner.getSelectedItem()),String.valueOf(dest_spinner.getSelectedItem()),date,String.valueOf(_time),Integer.valueOf(number_place.getText().toString()));
            // db.collection("Reservations").document("client").set(bus_seat_booked);
           // Create a new user with a first and last name
-            Map<String, Object> bus_seat_booked = new HashMap<>();
+          /*  Map<String, Object> bus_seat_booked = new HashMap<>();
            bus_seat_booked.put("Dept_town", String.valueOf(dept_spinner.getSelectedItem()));
             bus_seat_booked.put("Dest_town",String.valueOf(dest_spinner.getSelectedItem()));
             bus_seat_booked.put("date",date);
@@ -233,32 +212,15 @@ public class Research_formular extends AppCompatActivity implements View.OnClick
             bus_seat_booked.put("place_booked",Integer.valueOf(number_place.getText().toString()));
             bus_seat_booked.put("Custom",name );
             bus_seat_booked.put("email", email);
-            bus_seat_booked.put("phone",phone);
+            bus_seat_booked.put("phone",phone);*/
 
-            // Add a new document with a generated ID
-            db.collection("Reservations")
-                    .add(bus_seat_booked)
-                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                        @Override
-                        public void onSuccess(DocumentReference documentReference) {
-                           // Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
-
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                           // Log.w(TAG, "Error adding document", e);
-                        }
-                    });
-
-          dateBooked = String.valueOf(day)+"-"+String.valueOf(month +1)+"-"+String.valueOf(myear);
-          dep_des = _departure+"-"+_destination;
-          horaire = _time;
+            dateBooked = String.valueOf(day)+"-"+String.valueOf(month +1)+"-"+String.valueOf(myear);
+            dep_des = _departure+"-"+_destination;
+            horaire = _time;
 
 
 
-           // db.collection("Bus0").document(dateBooked).collection(dep_des).document(horaire);
+            // db.collection("Bus0").document(dateBooked).collection(dep_des).document(horaire);
 
             DocumentReference docRef =   db.collection("Bus0").document(dateBooked).collection(dep_des).document(horaire);
             docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -269,14 +231,14 @@ public class Research_formular extends AppCompatActivity implements View.OnClick
                         int n ;
                         if (document.exists()) {
 
-                                n=Integer.valueOf( (document.getData().get("nbreRestant").toString()));
-                                int i=Integer.valueOf(number_place.getText().toString());
+                            n=Integer.valueOf( (document.getData().get("nbreRestant").toString()));
+                            int i=Integer.valueOf(number_place.getText().toString());
 
 
-                                    n = n - Integer.valueOf(number_place.getText().toString());
-                                    Map<String,Integer> numSeat = new HashMap<>();
-                                    numSeat.put("nbreRestant",n);
-                                    db.collection("Bus0").document(dateBooked).collection(dep_des).document(horaire) .set(numSeat, SetOptions.merge());
+                            n = n - Integer.valueOf(number_place.getText().toString());
+                            Map<String,Integer> numSeat = new HashMap<>();
+                            numSeat.put("nbreRestant",n);
+                            db.collection("Bus0").document(dateBooked).collection(dep_des).document(horaire) .set(numSeat, SetOptions.merge());
 
 
                         } else {
@@ -293,6 +255,24 @@ public class Research_formular extends AppCompatActivity implements View.OnClick
                     }
                 }
             });
+
+
+            // Add a new document with a generated ID
+           /* db.collection("Reservations")
+                    .add(bus_seat_booked)
+                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                        @Override
+                        public void onSuccess(DocumentReference documentReference) {
+                            Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                           Log.w(TAG, "Error adding document", e);
+                        }
+                    });*/
 
 
 

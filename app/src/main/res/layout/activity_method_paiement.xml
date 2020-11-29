@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".byt.method_paiement">
+
+
+    <TextView
+            android:id="@+id/title_createAccount"
+            android:text="PAYMENT METHOD"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="33dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="33dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="117dp"
+            android:layout_alignParentTop="true"/>
+    <Button
+            android:id="@+id/Paypal"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:background="@drawable/button_shape"
+            android:text="PAYPAL"
+            android:textColor="@android:color/background_light"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.539"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_alignParentStart="true" android:layout_marginLeft="19dp" android:layout_marginStart="19dp"
+            android:layout_alignParentLeft="true" android:layout_marginTop="292dp"
+            android:layout_alignParentTop="true"/>
+
+    <Button
+            android:id="@+id/wave"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:background="@drawable/button_shape"
+            android:text="WAVE"
+            android:textColor="@android:color/background_light"
+            android:textSize="16sp" android:layout_alignParentStart="true" android:layout_marginLeft="19dp"
+            android:layout_marginStart="19dp" android:layout_alignParentLeft="true" android:layout_marginTop="504dp"
+            android:layout_alignParentTop="true"/>
+
+    <Button
+            android:id="@+id/OM"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:background="@drawable/button_shape"
+            android:text="Orange\n Money"
+            android:textColor="@android:color/background_light"
+            android:textSize="16sp" android:layout_alignParentStart="true" android:layout_marginLeft="251dp"
+            android:layout_marginStart="251dp" android:layout_alignParentLeft="true" android:layout_marginTop="291dp"
+            android:layout_alignParentTop="true"/>
+
+    <Button
+            android:id="@+id/wizall"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:background="@drawable/button_shape"
+            android:text="Wizall\n Money"
+            android:textColor="@android:color/background_light"
+            android:textSize="16sp" android:layout_alignParentStart="true" android:layout_marginLeft="248dp"
+            android:layout_marginStart="248dp" android:layout_alignParentLeft="true" android:layout_marginTop="502dp"
+            android:layout_alignParentTop="true"/>
+
+
+</RelativeLayout>

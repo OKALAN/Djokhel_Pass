@@ -1,19 +1,55 @@
 package com.example.diokhlpass.byt;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.diokhlpass.R;
+import com.example.diokhlpass.home.Home;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class infoSeats extends AppCompatActivity {
     private TextView desp,arr,scode,NOT,DOT,TT,price, pay_button;
-    private String dsp , arv, sc, num, day,month,year, ttt;
+    private String dsp , arv, sc, num, day,month,year, ttt,pc;
+    private int priceTotal;
+    private  float PriceDollar;
+    private // Access a Cloud Firestore instance from your Activity
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private String TAG;
+    private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    private String infoQR;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_seats);
+
+        String name = "lala", email = "xyz@gmail.com", phone = "778001212";
+
+        if (user != null) {
+            // Name, email address, and phone
+            name = user.getDisplayName();
+            email = user.getEmail();
+            phone = user.getPhoneNumber();
+
+
+            // Check if user's email is verified
+            //boolean emailVerified = user.isEmailVerified();
+
+            // The user's ID, unique to the Firebase project. Do NOT use this value to
+            // authenticate with your backend server, if you have one. Use
+            // FirebaseUser.getIdToken() instead.
+            String uid = user.getUid();
+        }
 
         desp = findViewById(R.id.pt_preview);
         arr = findViewById(R.id.dst_preview);
@@ -24,6 +60,7 @@ public class infoSeats extends AppCompatActivity {
         price = findViewById(R.id.pric_preview);
         pay_button = findViewById(R.id.payBill_button);
 
+
         dsp = getIntent().getStringExtra("dept");
         arv = getIntent().getStringExtra("arr");
         sc = getIntent().getStringExtra("scode");
@@ -33,18 +70,67 @@ public class infoSeats extends AppCompatActivity {
         year = getIntent().getStringExtra("year");
         ttt = getIntent().getStringExtra("ttt");
 
+        final String date = day+"-"+month+"-"+year;
+
+
+
+
+        Map<String, Object> bus_seat_booked = new HashMap<>();
+        bus_seat_booked.put("Dept_town", dsp);
+        bus_seat_booked.put("Dest_town",arv);
+        bus_seat_booked.put("date",date);
+        bus_seat_booked.put("leaving_time",ttt);
+        bus_seat_booked.put("place_booked",Integer.valueOf(num));
+        bus_seat_booked.put("Custom",name );
+        bus_seat_booked.put("email", email);
+        bus_seat_booked.put("phone",phone);
+
+        priceTotal = (Integer.valueOf(num)) * 5000;
+        PriceDollar = priceTotal/551;
+         pc =String.valueOf(PriceDollar);
+        bus_seat_booked.put("PaySum", priceTotal);
+        bus_seat_booked.put("scode",sc);
+
+
+        db.collection("Reservations").document(date).collection(user.getEmail()).add(bus_seat_booked);
+
+           pay_button.setOnClickListener(new View.OnClickListener() {
+               @Override
+               public void onClick(View v) {
+                   Intent intent =new Intent(infoSeats.this,method_paiement.class);
+                   infoQR =" Dep: "+ dsp + "\n"+ "Arv: "+arv + "\n"+"Nombre de ticket(s): "+num+"\n"+ "No. siège(s): "+ sc + "\n"+ "Date: "+date+ "\n"+ "Heure de dep: "+ ttt;
+                   Log.d(TAG, "chaton:"+infoQR);
+                   intent.putExtra("priceTotal",pc);
+                   intent.putExtra("infoQR",infoQR);
+                   startActivity(intent);
+               }
+           });
+
         desp.setText(dsp);
         arr.setText(arv);
         scode.setText(sc);
         NOT.setText(num);
         DOT.setText(new StringBuilder().append(day).append("/").append(month).append("/").append(year));
         TT.setText(ttt);
-        price.setText(new StringBuilder().append(num).append("x").append("5000 F CFA"));
-
-
-
-
+        price.setText(new StringBuilder().append(num).append("x").append("5000 F CFA").append("= ").append(priceTotal+" F CFA"));
 
 
     }
+
+
+
+
+    @Override
+    public void onBackPressed() {
+        Intent i = new Intent(this, Home.class);
+        startActivity(i);
+        finish();
+    }
+
 }
+
+
+
+
+
+
