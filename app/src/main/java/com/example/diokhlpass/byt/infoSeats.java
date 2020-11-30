@@ -23,8 +23,8 @@ public class infoSeats extends AppCompatActivity {
     private // Access a Cloud Firestore instance from your Activity
             FirebaseFirestore db = FirebaseFirestore.getInstance();
     private String TAG;
-    private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-    private String infoQR;
+
+    private String infoQR  ,  name = "lala", email, phone = "778001212";
 
 
 
@@ -33,9 +33,11 @@ public class infoSeats extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info_seats);
 
-        String name = "lala", email = "xyz@gmail.com", phone = "778001212";
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        Log.d(TAG, String.valueOf(user));
+        email= getIntent().getStringExtra("email");
 
-        if (user != null) {
+      /*  if (user != null) {
             // Name, email address, and phone
             name = user.getDisplayName();
             email = user.getEmail();
@@ -49,7 +51,7 @@ public class infoSeats extends AppCompatActivity {
             // authenticate with your backend server, if you have one. Use
             // FirebaseUser.getIdToken() instead.
             String uid = user.getUid();
-        }
+        }*/
 
         desp = findViewById(R.id.pt_preview);
         arr = findViewById(R.id.dst_preview);
@@ -72,9 +74,6 @@ public class infoSeats extends AppCompatActivity {
 
         final String date = day+"-"+month+"-"+year;
 
-
-
-
         Map<String, Object> bus_seat_booked = new HashMap<>();
         bus_seat_booked.put("Dept_town", dsp);
         bus_seat_booked.put("Dest_town",arv);
@@ -87,18 +86,17 @@ public class infoSeats extends AppCompatActivity {
 
         priceTotal = (Integer.valueOf(num)) * 5000;
         PriceDollar = priceTotal/551;
-         pc =String.valueOf(PriceDollar);
+        pc =String.valueOf(PriceDollar);
         bus_seat_booked.put("PaySum", priceTotal);
         bus_seat_booked.put("scode",sc);
 
-
-        db.collection("Reservations").document(date).collection(user.getEmail()).add(bus_seat_booked);
+        db.collection("Reservations").document(date).collection(email).add(bus_seat_booked);
 
            pay_button.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View v) {
                    Intent intent =new Intent(infoSeats.this,method_paiement.class);
-                   infoQR =" Dep: "+ dsp + "\n"+ "Arv: "+arv + "\n"+"Nombre de ticket(s): "+num+"\n"+ "No. siège(s): "+ sc + "\n"+ "Date: "+date+ "\n"+ "Heure de dep: "+ ttt;
+                   infoQR ="JOXEEL PASS :"+"\n"+" Dep: "+ dsp + "\n"+ "Arv: "+arv + "\n"+"Nombre de ticket(s): "+num+"\n"+ "No. siège(s): "+ sc + "\n"+ "Date: "+date+ "\n"+ "Heure de dep: "+ ttt;
                    Log.d(TAG, "chaton:"+infoQR);
                    intent.putExtra("priceTotal",pc);
                    intent.putExtra("infoQR",infoQR);

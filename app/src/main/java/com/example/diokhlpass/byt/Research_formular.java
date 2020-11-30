@@ -30,7 +30,7 @@ public class Research_formular extends AppCompatActivity implements View.OnClick
     private ImageButton btnPlus, btnMinus;
     private TextView number_place;
     private  EditText datePicker;
-    private String date, dateBooked,dep_des, horaire;
+    private String date, dateBooked,dep_des, horaire, email;
     final Calendar myCalendar = Calendar.getInstance();
     private ProgressBar spinner;
     private Button findRide;
@@ -53,7 +53,7 @@ public class Research_formular extends AppCompatActivity implements View.OnClick
 
 
 
-       // Toolbar toolbar =(Toolbar) findViewById();
+      email = getIntent().getStringExtra("email");
 
         //Spinner departure place
         dept_spinner = (Spinner) findViewById(R.id.spinner_dept_from);
@@ -238,6 +238,7 @@ public class Research_formular extends AppCompatActivity implements View.OnClick
                             n = n - Integer.valueOf(number_place.getText().toString());
                             Map<String,Integer> numSeat = new HashMap<>();
                             numSeat.put("nbreRestant",n);
+
                             db.collection("Bus0").document(dateBooked).collection(dep_des).document(horaire) .set(numSeat, SetOptions.merge());
 
 
@@ -286,6 +287,7 @@ public class Research_formular extends AppCompatActivity implements View.OnClick
             intent.putExtra("month", String.valueOf(month +1));
             intent.putExtra("year", String.valueOf(myear));
             intent.putExtra("time",String.valueOf(_time));
+            intent.putExtra("email",email);
             startActivity(intent);
         }
     }

@@ -40,6 +40,7 @@ dependencies {
 
     implementation 'com.github.satyan:sugar:1.5'
 
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
@@ -62,9 +63,12 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore'
     //paypal
     implementation 'com.paypal.sdk:paypal-android-sdk:2.16.0'
-
+    //qr code
     implementation 'com.google.zxing:core:3.2.1'
     implementation 'com.journeyapps:zxing-android-embedded:3.2.0@aar'
+    // google map
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
+
 
 }
 

@@ -12,7 +12,7 @@ import com.example.diokhlpass.byt.select_seat.Select_seat;
 public class Result_buses extends AppCompatActivity {
 
     TextView dept_preview, dest_preview, number_ticket, travel_date, travel_time;
-    String departure,arrival,Tickets,day,month,year,time;
+    String departure,arrival,Tickets,day,month,year,time,email;
     Button choose_a_seat;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +35,7 @@ public class Result_buses extends AppCompatActivity {
     month = getIntent().getStringExtra("month");
     year = getIntent().getStringExtra("year");
     time = getIntent().getStringExtra("time");
+    email = getIntent().getStringExtra("email");
 
     dept_preview.setText(departure);
     dest_preview.setText(arrival);
@@ -56,6 +57,7 @@ public class Result_buses extends AppCompatActivity {
           i.putExtra("NOT",Tickets);
           i.putExtra("day",day);
           i.putExtra("ttt",time);
+          i.putExtra("email",email);
           startActivity(i);
 
 

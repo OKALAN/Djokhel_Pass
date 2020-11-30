@@ -5,26 +5,31 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.*;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.TextView;
+import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import com.example.diokhlpass.Map.map_JP;
 import com.example.diokhlpass.R;
 import com.example.diokhlpass.byt.Research_formular;
 import com.google.android.material.navigation.NavigationView;
 
 public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    private Button BYT , profile, balance, book_checker, MTB, contact_us;
+    private Button BYT , profile,map, book_checker, MTB, contact_us;
     private ImageButton calendar;
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private Toolbar toolbar;
     private Menu menu;
     private TextView textView;
+    private String email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,11 +45,12 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
         BYT = findViewById(R.id.bat);
         profile = findViewById(R.id.profile);
-        balance = findViewById(R.id.balance);
+        map = findViewById(R.id.map);
         book_checker = findViewById(R.id.book_checker);
         MTB = findViewById(R.id.Mtb);
         contact_us = findViewById(R.id.contact_us);
         calendar = findViewById(R.id.calendar_icon);
+        email = getIntent().getStringExtra("email");
 
 
 
@@ -59,9 +65,18 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Home.this, Research_formular.class);
+                i.putExtra("email",email);
                 startActivity(i);
 
 
+            }
+        });
+
+        map.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Home.this, map_JP.class);
+                startActivity(i);
             }
         });
 

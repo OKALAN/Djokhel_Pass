@@ -202,7 +202,7 @@
                                 android:layout_height="150dp"
                                 android:background="@drawable/button_shape"
                                 android:text="@string/map"
-                                android:id="@+id/balance"
+                                android:id="@+id/map"
                                 android:textColor="@color/white"
                                 android:textSize="24sp"
                                 android:layout_row="0"

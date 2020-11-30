@@ -43,7 +43,7 @@
             android:id="@+id/img_seat_booked"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:src="@drawable/booked_seat"
+            android:src="@drawable/avalaible_seat"
             android:visibility="invisible">
 
 

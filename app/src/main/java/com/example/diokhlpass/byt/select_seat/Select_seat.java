@@ -74,7 +74,7 @@ public class Select_seat extends AppCompatActivity implements OnSeatSelected {
         txtSeatSelected.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String dsp , arv, num, day,month,year, ttt;
+                String dsp , arv, num, day,month,year, ttt,email;
                 listnumSeat =  adapter.numSeat();
                 Intent i = new Intent(Select_seat.this, infoSeats.class);
                 //String c = String.valueOf(listnumSeat.size()) ;
@@ -88,13 +88,15 @@ public class Select_seat extends AppCompatActivity implements OnSeatSelected {
                 month = getIntent().getStringExtra("month");
                 year = getIntent().getStringExtra("year");
                 ttt = getIntent().getStringExtra("ttt");
+                email = getIntent().getStringExtra("email");
 
                 String a =" " ;
                 String nB;
                 if ( Integer.valueOf(num)==listnumSeat.size() ){
+
                     for (int x=0;x<listnumSeat.size();x++){
                         a = a + String.valueOf(listnumSeat.get(x)) + " ";
-                        nB = "numBooked"+x;
+                        nB ="code_"+listnumSeat.get(x) ;
                         numBooked.put(nB,listnumSeat.get(x));
                         db.collection("Bus0").document(day+"-"+month+"-"+year).collection(dsp+"-"+arv).document(ttt).set(numBooked, SetOptions.merge());
 
@@ -110,6 +112,7 @@ public class Select_seat extends AppCompatActivity implements OnSeatSelected {
                     i.putExtra("day",day);
                     i.putExtra("ttt",ttt);
                     i.putExtra("scode",a);
+                    i.putExtra("email",email);
 
                     startActivity(i);
 

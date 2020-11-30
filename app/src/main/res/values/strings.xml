@@ -34,4 +34,7 @@
     <string name="date_text" translatable="false">Vous ne pouvez réserver que pendant les 7 jours prochains et pas
         au-delà. Donc choissisez une bonne date .
     </string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
