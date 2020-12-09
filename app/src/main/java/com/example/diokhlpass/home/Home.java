@@ -2,6 +2,7 @@ package com.example.diokhlpass.home;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,8 +18,12 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import com.example.diokhlpass.Map.map_JP;
 import com.example.diokhlpass.R;
+import com.example.diokhlpass.bookChecker.bookChecker;
 import com.example.diokhlpass.byt.Research_formular;
+import com.example.diokhlpass.log.PremierPgeActivity;
+import com.example.diokhlpass.profile.profile_page;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -29,7 +34,8 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
     private Toolbar toolbar;
     private Menu menu;
     private TextView textView;
-    private String email;
+    private String email,emailP;
+    private String TAG;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +47,8 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         textView=findViewById(R.id.textView);
         toolbar=findViewById(R.id.toolbar);
 
-
+        emailP = getIntent().getStringExtra("emailP");
+        Log.d(TAG, "onDataChange: "+ emailP);
 
         BYT = findViewById(R.id.bat);
         profile = findViewById(R.id.profile);
@@ -51,6 +58,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         contact_us = findViewById(R.id.contact_us);
         calendar = findViewById(R.id.calendar_icon);
         email = getIntent().getStringExtra("email");
+
 
 
 
@@ -80,23 +88,43 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             }
         });
 
+       profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(Home.this, profile_page.class);
+                startActivity(i);
+            }
+        });
+
+       book_checker.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               Intent i = new Intent(Home.this, bookChecker.class);
+               startActivity(i);
+           }
+       });
+
 
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.nav_home: break; case R.id.nav_help:
+            case R.id.nav_home:
+            case R.id.nav_AboutUs:
+                break;
+                case R.id.nav_help:
               /*  Intent intent = new Intent(Home.this, help.class);
                 startActivity(intent);*/
                 break;
-            case R.id.nav_AboutUs: menu.findItem(R.id.nav_logout).setVisible(true);
-                menu.findItem(R.id.nav_share).setVisible(true);
-                menu.findItem(R.id.nav_rate).setVisible(false);
-                break;
-            case R.id.nav_logout: menu.findItem(R.id.nav_logout).setVisible(false);
-                menu.findItem(R.id.nav_rate).setVisible(false);
-                menu.findItem(R.id.nav_logout).setVisible(true);
+            case R.id.nav_logout:
+                FirebaseAuth.getInstance().signOut();
+                Intent i = new Intent(Home.this, PremierPgeActivity.class);
+                startActivity(i);
+                finish();
+
+
                 break;
             case R.id.nav_share: Toast.makeText(this, "Share", Toast.LENGTH_SHORT).show(); break;
         }

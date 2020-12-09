@@ -18,6 +18,8 @@ import java.math.BigDecimal;
 
 public class method_paiement extends AppCompatActivity {
     Button om, paypal, wave,wizall;
+    private String dsp , arv, sc, num, day,month,year, ttt,pc,date;
+
 
     //Paypal  request code
     public static final int PAYPAL_REQUEST_CODE = 123;
@@ -46,6 +48,17 @@ public class method_paiement extends AppCompatActivity {
         wizall = findViewById(R.id.wizall);
 
         infoQR = getIntent().getStringExtra("infoQR");
+        dsp = getIntent().getStringExtra("dept");
+        arv = getIntent().getStringExtra("arr");
+        sc = getIntent().getStringExtra("scode");
+        num = getIntent().getStringExtra("NOT");
+        day = getIntent().getStringExtra("day");
+        month = getIntent().getStringExtra("month");
+        year = getIntent().getStringExtra("year");
+        ttt = getIntent().getStringExtra("ttt");
+        pc =getIntent().getStringExtra("price");
+        date = day+"-"+month+"-"+year;
+
         paypal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,6 +71,15 @@ public class method_paiement extends AppCompatActivity {
             public void onClick(View v) {
                 Toast.makeText(method_paiement.this, "Bientot Disponible!",Toast.LENGTH_SHORT).show();
                 Intent i = new Intent(method_paiement.this, qr_code.class);
+                i.putExtra("dept", dsp);
+                i.putExtra("arr",arv);
+                i.putExtra("day",day);
+                i.putExtra("NOT",num);
+                i.putExtra("date",date);
+                i.putExtra("ttt",ttt);
+                i.putExtra("scode",sc);
+                i.putExtra("pc", pc);
+
                 i.putExtra("infoQR",infoQR);
                 startActivity(i);
 

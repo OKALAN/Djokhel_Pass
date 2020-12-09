@@ -15,6 +15,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -37,6 +39,9 @@ public class Research_formular extends AppCompatActivity implements View.OnClick
     private // Access a Cloud Firestore instance from your Activity
             FirebaseFirestore db = FirebaseFirestore.getInstance();
     private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    private DatabaseReference mDatabase;
+    private String userId = FirebaseAuth.getInstance().getUid();
+
     private String TAG;
     private  Map<String,Integer> numSeat = new HashMap<>();
     private int i =  myCalendar.get(Calendar.DAY_OF_MONTH);
@@ -51,9 +56,6 @@ public class Research_formular extends AppCompatActivity implements View.OnClick
         setContentView(R.layout.activity_research_formular);
 
 
-
-
-      email = getIntent().getStringExtra("email");
 
         //Spinner departure place
         dept_spinner = (Spinner) findViewById(R.id.spinner_dept_from);
@@ -102,7 +104,7 @@ public class Research_formular extends AppCompatActivity implements View.OnClick
                     myear = year;
                     month = monthOfYear;
                     day = dayOfMonth;
-                    if ((day>i)&&(day<=i+7)){
+                    if ((day>=i)&&(day<=i+7)){
                          updateLabel();
                    }
                    else
@@ -166,13 +168,22 @@ public class Research_formular extends AppCompatActivity implements View.OnClick
 
     private void validation() {
 
+
         String _departure = String.valueOf(dept_spinner.getSelectedItem());
         String _destination = String.valueOf(dest_spinner.getSelectedItem());
         String _time = String.valueOf(Select_busSpinner.getSelectedItem());
-        String name = "lala", email = "xyz@gmail.com", phone = "778001212";
+
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        String name, phone = "778001212";
+        email = getIntent().getStringExtra("email");
+
         date = String.valueOf(day)+"/"+String.valueOf(month +1)+"/"+String.valueOf(myear);
 
 
+    /*    int prix ;
+     if (_departure.equals("Dakar")&&_destination.equals("Thies")){
+            prix = 3000;
+        } else if*/
 
 
         if (_departure.equals("Dakar") && _destination.equals("Dakar")) {

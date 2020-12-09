@@ -95,12 +95,23 @@ public class infoSeats extends AppCompatActivity {
            pay_button.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View v) {
-                   Intent intent =new Intent(infoSeats.this,method_paiement.class);
+                   Intent i =new Intent(infoSeats.this,method_paiement.class);
                    infoQR ="JOXEEL PASS :"+"\n"+" Dep: "+ dsp + "\n"+ "Arv: "+arv + "\n"+"Nombre de ticket(s): "+num+"\n"+ "No. siège(s): "+ sc + "\n"+ "Date: "+date+ "\n"+ "Heure de dep: "+ ttt;
                    Log.d(TAG, "chaton:"+infoQR);
-                   intent.putExtra("priceTotal",pc);
-                   intent.putExtra("infoQR",infoQR);
-                   startActivity(intent);
+                   i.putExtra("priceTotal",pc);
+                   i.putExtra("infoQR",infoQR);
+                   i.putExtra("dept", dsp);
+                   i.putExtra("arr",arv);
+                   i.putExtra("day",day);
+                   i.putExtra("month", month);
+                   i.putExtra("year",year);
+                   i.putExtra("NOT",num);
+                   i.putExtra("day",day);
+                   i.putExtra("ttt",ttt);
+                   i.putExtra("scode",sc);
+                   i.putExtra("price",String.valueOf(priceTotal));
+                   i.putExtra("email",email);
+                   startActivity(i);
                }
            });
 
@@ -111,6 +122,8 @@ public class infoSeats extends AppCompatActivity {
         DOT.setText(new StringBuilder().append(day).append("/").append(month).append("/").append(year));
         TT.setText(ttt);
         price.setText(new StringBuilder().append(num).append("x").append("5000 F CFA").append("= ").append(priceTotal+" F CFA"));
+
+
 
 
     }

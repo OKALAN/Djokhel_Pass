@@ -10,6 +10,7 @@ import android.widget.*;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.diokhlpass.R;
+import com.example.diokhlpass.profile.profile_page;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -105,6 +106,15 @@ public class RegisterActivity extends AppCompatActivity {
                         sex = femaleCheckbox.getText().toString();
                     }
                     user = new User(fname, email, birthday, address, phone,password,sex);
+
+                    Intent i = new Intent(RegisterActivity.this, profile_page.class);
+                    i.putExtra("fname", fname);
+                    i.putExtra("email", email);
+                    i.putExtra("birth", birthday);
+                    i.putExtra("address", address);
+                    i.putExtra("sex", sex);
+                    i.putExtra("phone", phone);
+                    startActivity(i);
                     registerUser();
                 }
             }

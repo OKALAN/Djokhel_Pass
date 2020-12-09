@@ -4,7 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.*;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.diokhlpass.R;
@@ -20,10 +23,10 @@ public class PremierPgeActivity extends AppCompatActivity {
 
     private TextView  registerTextView, forgetPassTextView;
     private EditText emailEditText, passwordEditText;
-    private ImageView logoImageView;
+    
     private Button loginButton;
     private FirebaseAuth mAuth;
-    private String email, password;
+    private String email, password, emailP;
     private static final String TAG = "activity_premier_pge";
 
 
@@ -58,6 +61,8 @@ public class PremierPgeActivity extends AppCompatActivity {
                 }
 
                 else {
+                  
+
                 mAuth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(PremierPgeActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
@@ -66,7 +71,9 @@ public class PremierPgeActivity extends AppCompatActivity {
                                     // Sign in success, update UI with the signed-in user's information
                                     Log.d(TAG, "signInWithEmail:success");
                                     FirebaseUser user = mAuth.getCurrentUser();
+                                    up_dateUI(user,email);
                                     updateUI(user);
+
                                 } else {
                                     // If sign in fails, display a message to the user.
                                     Log.w(TAG, "signInWithEmail:failure", task.getException());
@@ -78,6 +85,8 @@ public class PremierPgeActivity extends AppCompatActivity {
                                 // ...
                             }
                         });
+               
+
                 }
             }
         });
@@ -91,6 +100,14 @@ public class PremierPgeActivity extends AppCompatActivity {
                 startActivity(registerIntent);
             }
         });
+
+    }
+
+    private void up_dateUI(FirebaseUser user, String emailP) {
+        Intent i = new Intent(PremierPgeActivity.this , Home.class);
+        i.putExtra("emailP",emailP);
+        Log.v("DATA", emailP);
+        startActivity(i);
 
     }
 
@@ -119,7 +136,7 @@ public class PremierPgeActivity extends AppCompatActivity {
     public void updateUI(FirebaseUser currentUser) {
         Intent HomePgeIntent = new Intent(getApplicationContext(), Home.class);
           HomePgeIntent.putExtra("email", currentUser.getEmail());
-//        Log.v("DATA", currentUser.getUid());
+         Log.v("DATA", currentUser.getUid());
         startActivity(HomePgeIntent);
     }
 

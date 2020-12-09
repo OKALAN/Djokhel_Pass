@@ -7,15 +7,6 @@
             android:title="@string/home"
             android:icon="@drawable/ic_home_icon"/>
 
-      <!-- <item
-               android:id="@+id/nav_profile"
-               android:title="Profile"
-               android:icon="@drawable/ic_profile"/>
-
-       <item
-               android:id="@+id/nav_historiq"
-               android:title="Journal"
-               android:icon="@drawable/ic_book"/>-->
        <item
                android:id="@+id/nav_help"
                android:title="Help"
